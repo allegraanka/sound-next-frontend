@@ -3,8 +3,8 @@ import { FaCalendarDay } from 'react-icons/fa';
 
 const ShowComponent = ({ show }) => {
     const formatDate = (dateInput) => {
-        var options = {  weekday: 'short', month: 'numeric', day: 'numeric'};
-        const date = new Date(dateInput).toLocaleDateString('en-us', options);
+        var options = {  weekday: 'short', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'};
+        const date = new Date(dateInput).toLocaleTimeString('en-us', options);
         return date;
     }
 
@@ -13,18 +13,17 @@ const ShowComponent = ({ show }) => {
             <div className={`bg-white text-black min-w-fit px-2 mr-4`}>
                 <div className={`w-fit flex items-center`}>
                     {show.isToday ? <FaCalendarDay /> : ''}
-                    <div className={``}>{formatDate(show.attributes.date)}</div>
+                    <div className={``}>{formatDate(show.fields.date)}</div>
                 </div>
-                <div className={`text-xl`}>{show.attributes.showTime}</div>
-                <div className={`text-xl`}>{show.attributes.ticketPrice}</div>
+                <div className={`text-xl`}>{show.fields.ticketPrice}</div>
             </div>
             <div className={``}>
-                <Link href={`/shows/${show.id}`}>
-                    <a><div className={`text-2xl`}>{show.attributes.headliner}</div></a>
+                <Link href={`/shows/${show.fields.slug}`}>
+                    <a><div className={`text-2xl`}>{show.fields.headliner}</div></a>
                 </Link>
-                <div className={``}>{show.attributes.support ? <span>{show.attributes.support}</span> : ''}</div>
-                <div className={`text-xl uppercase`}>{show.attributes.venue}</div>
-                <div className={`text-xs uppercase`}>{show.attributes.genre}</div>
+                <div className={``}>{show.fields.support ? <span>{show.fields.support}</span> : ''}</div>
+                <div className={`text-xl uppercase`}>{show.fields.venue}</div>
+                <div className={`text-xs uppercase`}>{show.fields.genre}</div>
             </div>
         </div>
     );

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import ShowComponent from '../ShowComponent/ShowComponent';
+import ShowComponent from './ShowComponent';
 
 const Tonight = ({ shows }) => {
     const current = new Date();
@@ -13,15 +13,15 @@ const Tonight = ({ shows }) => {
     }
 
     const showsTonight = shows.filter((show) => {
-        const showDate = new Date(show.attributes.date);
+        const showDate = new Date(show.fields.date);
         const formattedShowDate = formatDate(showDate);
         const formattedCurrentDate = formatDate(current);
-        return formattedShowDate === formattedCurrentDate && show.attributes.chosen === true;
+        return formattedShowDate === formattedCurrentDate;
     });
 
     const datetimeSorted = showsTonight.sort((a,b) => {
-        const x = new Date(a.attributes.date);
-        const y = new Date(b.attributes.date);
+        const x = new Date(a.fields.date);
+        const y = new Date(b.fields.date);
         return x - y;
     });
 
@@ -35,7 +35,7 @@ const Tonight = ({ shows }) => {
             )}
 
             {datetimeSorted && datetimeSorted.map((show) => (
-                <ShowComponent key={show.id} show={show}/>
+                <ShowComponent key={show.sys.id} show={show}/>
             ))}
 
             {shows.length > 0 && (

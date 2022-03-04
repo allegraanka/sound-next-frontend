@@ -1,19 +1,25 @@
-import Layout from '../components/Layout/Layout';
-import Tonight from '../components/tonight/tonight.component';
-import FeaturedPosts from '../components/FeaturedPosts/FeaturedPosts';
-import SubmitShow from '../components/SubmitShow/SubmitShow';
-import EmailCapture from '../components/email-capture/email-capture.component';
+import Layout from '../components/Layout';
+import Tonight from '../components/Tonight';
+import FeaturedPosts from '../components/FeaturedPosts';
+import EmailCapture from '../components/EmailCapture';
 import Link from 'next/link';
 import { fetchAPI } from '../lib/api';
+import { createClient } from 'contentful';
+
+const client = createClient({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_KEY
+  });
 
 const HomePage = ({ shows, featured }) => {
+  console.log('shows', shows);
+  console.log('posts', featured);
   return (
     <Layout>
       <div className={`grid grid-cols-1 lg:grid-cols-2`}>
         <div className={`p-4`}>
           <div className={`bg-white text-2xl my-2 w-fit md:text-left`}>The Sound is your source for curated live music in Rochester, NY and a music community incubator initiative. Learn more <Link href='/about'><a>about us</a></Link>.</div>
           <Tonight shows={shows}/>
-          <SubmitShow />
           <EmailCapture />
         </div>
         <FeaturedPosts featured={featured}/>
@@ -29,16 +35,16 @@ const HomePage = ({ shows, featured }) => {
 
 export async function getStaticProps() {
   const [shows, posts] = await Promise.all([
-    fetchAPI('/shows', { populate: '*', encodeValuesOnly: true }),
-    fetchAPI('/posts', { populate: '*', encodeValuesOnly: true })
+    client.getEntries({ content_type: 'show' }),
+    client.getEntries({ content_type: 'post' }),
   ])
   
-  const featuredPosts = posts.data.filter(post => post.attributes.featured === true);
+  const featuredPosts = posts.items.filter(post => post.fields.featured === true);
 
   return {
     props: {
-      shows: shows.data,
-      featured: featuredPosts
+      shows: shows.items,
+      featured: featuredPosts,
     }
   }
 }

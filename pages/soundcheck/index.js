@@ -1,9 +1,14 @@
 import Link from 'next/link';
-import Layout from '../../components/Layout/Layout';
-import NextImage from '../../components/Image/Image';
+import Layout from '../../components/Layout';
+import Image from 'next/image';
 import { fetchAPI } from '../../lib/api';
+import { createClient } from 'contentful';
 
-const SoundCheckPage = ({ posts }) => {
+const SoundCheckPage = ({ soundchecks }) => {
+    const filteredSCs = soundchecks.filter(sc => {
+      return sc.fields.soundcheck === true;
+    });
+
     return(
         <Layout title='The Sound | Sound Check Artist Spotlights'>
           <div className={`w-full px-4 md:w-3/4 xl:w-1/2`}>
@@ -11,15 +16,20 @@ const SoundCheckPage = ({ posts }) => {
                 <h1 className={`text-5xl`}>Sound Check Artist Spotlights</h1>
                 <div className={`text-xl`}>Welcome to our rapid-fire series that spotlights artists with questions that we hope will be fun to answer and even more fun to read.</div>
               </div>
-              {posts.map((post) => (
-                <div key={post.id} className={`my-4`}>
-                  <NextImage image={post.attributes.image}/>
-                  <Link href={`/soundcheck/${post.id}`}>
+              {filteredSCs.map((sc) => (
+                <div key={sc.sys.id} className={`my-4`}>
+                  <Image 
+                      src={`https:${sc.fields.thumbnail.fields.file.url}`}
+                      width={sc.fields.thumbnail.fields.file.details.image.width}
+                      height={sc.fields.thumbnail.fields.file.details.image.height}
+                      alt={sc.fields.thumbnail.fields.description}
+                  />
+                  <Link href={`/soundcheck/${sc.fields.slug}`}>
                     <a>
-                      <h2 className={`text-2xl text-red-dark hover:text-red-light`}>{post.attributes.title}</h2>
+                      <h2 className={`text-2xl text-red-dark hover:text-red-light`}>{sc.fields.title}</h2>
                     </a>
                   </Link>
-                  <div>{post.attributes.description}</div>
+                  <div>{sc.fields.description}</div>
                 </div>
               ))}
           </div>
@@ -28,12 +38,17 @@ const SoundCheckPage = ({ posts }) => {
 }
 
 export async function getStaticProps() {
-  const soundchecks = await fetchAPI('/posts', { populate: '*', encodeValuesOnly: true });
-  const filteredSoundchecks = soundchecks.data.filter(post => post.attributes.type === 'soundcheck');
+  const client = createClient({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_KEY
+  });
+
+  const res = await client.getEntries({ content_type: 'post' });
 
   return {
     props: {
-      posts: filteredSoundchecks
+      soundchecks: res.items,
+      revalidate: 1,
     }
   }
 }
