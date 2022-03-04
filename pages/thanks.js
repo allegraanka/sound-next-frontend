@@ -1,6 +1,4 @@
 import Link from 'next/link';
-import styles from '../styles/thanks.module.css';
-
 
 const Thanks = () => {
     return(

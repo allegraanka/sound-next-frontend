@@ -1,5 +1,5 @@
-import Layout from '../../components/Layout/Layout';
-import ShowComponent from '../../components/ShowComponent/ShowComponent';
+import Layout from '../../components/Layout';
+import ShowComponent from '../../components/ShowComponent';
 import { useRouter } from 'next/router';
 import { fetchAPI } from '../../lib/api';
 

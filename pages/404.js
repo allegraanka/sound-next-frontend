@@ -1,4 +1,4 @@
-import Layout from '../components/Layout/Layout';
+import Layout from '../components/Layout';
 import { FaExclamationTriangle } from 'react-icons/fa'
 import Link from 'next/link';
 

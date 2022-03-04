@@ -1,8 +1,7 @@
-import Layout from '../../components/Layout/Layout';
+import Layout from '../../components/Layout';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import styles from '../../styles/SubmitShow.module.css';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
@@ -57,10 +56,10 @@ export default function SubmitShowPage() {
                 <h1 className={`text-5xl text-black my-8`} >Submit a show</h1>
                 <ToastContainer />
 
-                <form onSubmit={handleSubmit} className={styles.form}>
+                <form onSubmit={handleSubmit}>
                     <div className={`w-full md:w-5/6 lg:w-1/2 2xl:w-1/4`}>
-                        <div className={styles.inputContainer}>
-                            <label className={styles.label} htmlFor='headliner'>Headlining band</label>
+                        <div>
+                            <label htmlFor='headliner'>Headlining band</label>
                             <input 
                                 className={`w-full my-4 text-red-dark`}
                                 type='text' 
@@ -71,8 +70,8 @@ export default function SubmitShowPage() {
                                 onChange={handleInputChange}
                             />
                         </div>
-                        <div className={styles.inputContainer}>
-                            <label className={styles.label} htmlFor='support'>Support band(s)</label>
+                        <div>
+                            <label htmlFor='support'>Support band(s)</label>
                             <input 
                                 className={`w-full my-4 text-red-dark`}
                                 type='text' 
@@ -83,8 +82,8 @@ export default function SubmitShowPage() {
                                 onChange={handleInputChange}
                             />
                         </div>
-                        <div className={styles.inputContainer}>
-                            <label className={styles.label} htmlFor='venue'>Venue</label>
+                        <div>
+                            <label htmlFor='venue'>Venue</label>
                             <input 
                                 className={`w-full my-4 text-red-dark`}
                                 type='text' 
@@ -95,8 +94,8 @@ export default function SubmitShowPage() {
                                 onChange={handleInputChange}
                             />
                         </div>
-                        <div className={styles.inputContainer}>
-                            <label className={styles.label} htmlFor='date'>Date</label>
+                        <div>
+                            <label htmlFor='date'>Date</label>
                             <input 
                                 className={`w-full my-4 text-red-dark`}
                                 type='date' 
@@ -106,8 +105,8 @@ export default function SubmitShowPage() {
                                 onChange={handleInputChange}
                             />
                         </div>
-                        <div className={styles.inputContainer}>
-                            <label className={styles.label} htmlFor='showTime'>Show time</label>
+                        <div>
+                            <label htmlFor='showTime'>Show time</label>
                             <input 
                                 className={`w-full my-4 text-red-dark`}
                                 type='text' 
@@ -118,8 +117,8 @@ export default function SubmitShowPage() {
                                 onChange={handleInputChange}
                             />
                         </div>
-                        <div className={styles.inputContainer}>
-                            <label className={styles.label} htmlFor='doorTime'>Door time</label>
+                        <div>
+                            <label htmlFor='doorTime'>Door time</label>
                             <input 
                                 className={`w-full my-4 text-red-dark`}
                                 type='text' 
@@ -130,8 +129,8 @@ export default function SubmitShowPage() {
                                 onChange={handleInputChange}
                             />
                         </div>
-                        <div className={styles.inputContainer}>
-                            <label className={styles.label} htmlFor='ticketPrice'>Ticket price</label>
+                        <div>
+                            <label htmlFor='ticketPrice'>Ticket price</label>
                             <input 
                                 className={`w-full my-4 text-red-dark`}
                                 type='text' 
@@ -144,7 +143,7 @@ export default function SubmitShowPage() {
                         </div>
                     </div>
                     <div className={`w-full md:w-5/6 lg:w-1/2 2xl:w-1/4`}>
-                        <label className={styles.label} htmlFor='description'>Description / Additional Info</label>
+                        <label htmlFor='description'>Description / Additional Info</label>
                         <textarea 
                             className={`w-full h-48 my-4 text-red-dark`} 
                             id='description' 

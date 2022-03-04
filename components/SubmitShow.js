@@ -1,4 +1,3 @@
-import styles from './SubmitShow.module.css';
 import Link from 'next/link';
 
 const SubmitShowCTA = () => {
