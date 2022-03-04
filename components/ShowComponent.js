@@ -21,7 +21,7 @@ const ShowComponent = ({ show }) => {
                 <Link href={`/shows/${show.fields.slug}`}>
                     <a><div className={`text-2xl`}>{show.fields.headliner}</div></a>
                 </Link>
-                <div className={``}>{show.fields.support ? <span>{show.fields.support}</span> : ''}</div>
+                <div className={``}>{show.fields.support ? <span>{show.fields.support.join(', ')}</span> : ''}</div>
                 <div className={`text-xl uppercase`}>{show.fields.venue}</div>
                 <div className={`text-xs uppercase`}>{show.fields.genre}</div>
             </div>
