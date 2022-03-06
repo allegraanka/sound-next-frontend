@@ -3,7 +3,6 @@ import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 
 export default function FeaturedPosts({ featured }) {
-    console.log('featurrrrreeeddd', featured);
     return(
         <div className={`p-4`}>
             <div className={`my-4`}>
@@ -22,12 +21,38 @@ export default function FeaturedPosts({ featured }) {
                             />
                             </div>
                             <div className={`px-2`}>
-                                {post.fields.post === true ? <Link href='/posts'><a className={`text-sm uppercase`}>Sound Board</a></Link> : ''}
-                                {post.fields.soundcheck === true ? <Link href='/soundcheck'><a className={`text-sm uppercase`}>Sound Check</a></Link> : ''}
-                                {post.fields.nnv === true ? <Link href='/nonnormalvectors'><a className={`text-sm uppercase`}>Non Normal Vectors</a></Link> : ''}
-                                <Link href={`${post.fields.nnv === true ? '/nonnormalvectors/' : '/posts/'}${post.fields.slug}`}>
-                                    <a className={`text-xl block`}>{post.fields.title}</a>
-                                </Link>
+                                {post.fields.post === true ? 
+                                    <div className={``}>
+                                        <Link href='/posts'><a className={`text-sm uppercase`}>Sound Board</a></Link>
+                                        <Link href={`${post.fields.post === true ? '/posts/' : ''}${post.fields.slug}`}>
+                                            <a className={`text-xl block`}>{post.fields.title}</a>
+                                        </Link>
+                                    </div>
+                                : ''}
+                                {post.fields.soundcheck === true ? 
+                                    <div className={``}>
+                                        <Link href='/soundcheck'><a className={`text-sm uppercase`}>Sound Check</a></Link>
+                                        <Link href={`${post.fields.soundcheck === true ? '/soundcheck/' : ''}${post.fields.slug}`}>
+                                            <a className={`text-xl block`}>{post.fields.title}</a>
+                                        </Link>
+                                    </div>
+                                : ''}
+                                {post.fields.nnv === true ? 
+                                    <div className={``}>
+                                        <Link href='/nonnormalvectors'><a className={`text-sm uppercase`}>Non-Normal Vectors</a></Link>
+                                        <Link href={`${post.fields.nnv === true ? '/nonnormalvectors/' : ''}${post.fields.slug}`}>
+                                            <a className={`text-xl block`}>{post.fields.title}</a>
+                                        </Link>
+                                    </div>
+                                : ''}
+                                {post.fields.soundbytes === true ? 
+                                    <div className={``}>
+                                        <Link href='/soundbytes'><a className={`text-sm uppercase`}>Sound Bytes</a></Link>
+                                        <Link href={`${post.fields.soundbytes === true ? '/soundbytes/' : ''}${post.fields.slug}`}>
+                                            <a className={`text-xl block`}>{post.fields.title}</a>
+                                        </Link>
+                                    </div>
+                                : ''}
                                 <ReactMarkdown className={`text-sm`}>{post.fields.description}</ReactMarkdown>
                             </div>
                         </div>

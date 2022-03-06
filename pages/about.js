@@ -59,9 +59,9 @@ export default function AboutPage({ about }) {
                 <div className={`w-full lg:w-3/4 my-12 mx-auto px-4`}>
                     <p className={`text-3xl`}>
                         There are musicians all around you making powerful, important music. Music is about so much more than hits. 
-                        <span className={`text-4xl`}>Those big, iconic moments that change everything.</span> 
+                        <span className={`text-4xl`}> Those big, iconic moments that change everything. </span> 
                         It&apos;s more than just entertainment. For so many of us, music is truly a way to navigate life. It connects us with other people, as almost nothing else can. Music makes us smarter, and healtier, and happier. 
-                        <span className={`text-4xl`}>Music is necessary. What if you lived in a city that believed that? [A city] that said, we&apos;re not waiting for that hit song to define us. We&apos;re a music city. </span> 
+                        <span className={`text-4xl`}> Music is necessary. What if you lived in a city that believed that? [A city] that said, we&apos;re not waiting for that hit song to define us. We&apos;re a music city. </span> 
                         Because music is necessary.
                     </p>
                     <span className={`text-xl`}>Elizabeth Cawein, Music Export MEM Founder, Music strategy, advocacy, publicity</span>

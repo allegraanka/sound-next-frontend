@@ -16,7 +16,7 @@ const ShowsPage = ({ shows }) => {
                             </div>
                         </div>
                     ))}
-                    <div className={`w-1/2 mx-auto`}>paginator</div>
+                    {/* <Paginator className={`w-1/2 mx-auto`}/> */}
                 </div>
             </div>
         </Layout>  
@@ -50,7 +50,7 @@ export async function getStaticProps() {
   
     return {
         props: {
-          shows: datetimeSorted,
+          shows: datetimeSorted
         },
         revalidate: 1,
       }

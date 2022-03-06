@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import Layout from '../../components/Layout';
 import Image from 'next/image';
+import Layout from '../../components/Layout';
 import ReactMarkdown from 'react-markdown';
+import { fetchAPI } from '../../lib/api';
 import { createClient } from 'contentful';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
@@ -10,36 +11,21 @@ const client = createClient({
     accessToken: process.env.CONTENTFUL_ACCESS_KEY
   });
 
-const PostPage = ({ post }) => {
-    const { title, description, category, featured, thumbnail, writer, content } = post.fields;
+const SoundBytePage = ({ sb }) => {
+    const { title, description, category, featured, thumbnail, writer, content } = sb.fields;
     const body = documentToReactComponents(content);
 
-    // Date formatter
-    const formatDate = (dateInput) => {
-        var options = {  weekday: 'short', month: 'numeric', day: 'numeric'};
-        const date = new Date(dateInput).toLocaleDateString('en-us', options);
-        return date;
-    }
-
-    // Get and format publish date from post object
-    const publishDate = formatDate(post.sys.createdAt);
-
-    // // Get categories from post object
-    // const categories = post.attributes.categories.data.map((category) => {
-    //     return category.attributes.name;
-    // });
-    
     // Get writers from post object
-    const writers = post.fields.writer.map((writer) => {
+    const writers = sb.fields.writer.map((writer) => {
         return writer.fields.name;
     });
 
     return(
-        <Layout>
+        <Layout title='The Sound | Sound Bytes'>
             <div className={`p-4`}>
                 <article className={``}>
-                    <Link href='/posts'>
-                        <a className={`bg-white uppercase`}>← Back to posts</a>
+                    <Link href='/soundbytes'>
+                        <a className={`bg-white uppercase`}>← Back to Sound Bytes</a>
                     </Link>
                     <div className={`bg-white mt-12 mb-8`}>
                         <Image 
@@ -49,16 +35,16 @@ const PostPage = ({ post }) => {
                             alt={thumbnail.fields.description}
                         />
                         <h1 className={`text-5xl mt-4`}>{title}</h1>
-                        <p className={`uppercase text-sm`}>Written by <a href="#">{writers}</a> on {publishDate}</p>
+                        <p className={`uppercase text-sm`}>Written by <a href="#">{writers}</a> on {sb.sys.createdAt}</p>
                     </div>
-                    <div className={`bg-white py-4 w-full lg:w-3/4`}>
-                        <ReactMarkdown className={`text-2xl my-4`}>{description}</ReactMarkdown>
-                        <div>{body}</div>
+                    <div className={`bg-white w-full lg:w-3/4`}>
+                        <h2 className={`text-2xl my-4`}>{description}</h2>
+                        <div className={`my-8`}>{body}</div>
                     </div>
                 </article>
                 <div className={`bg-white w-fit my-8`}>
-                    <span className={`text-lg`}>Did you enjoy this?</span>
-                    <Link href='/posts'>
+                    <span className={`text-lg`}>Was this fun to read?</span>
+                    <Link href='/soundbytes'>
                         <a className={`uppercase mx-4`}>Read more</a>
                     </Link>
                 </div>
@@ -92,10 +78,9 @@ export async function getStaticProps({ params }) {
 
     return {
         props: {
-            post: items[0],
-            revalidate: 1,
+            sb: items[0]
         }
     }
 }
 
-export default PostPage;
+export default SoundBytePage;

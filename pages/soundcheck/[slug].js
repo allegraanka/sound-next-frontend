@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Layout from '../../components/Layout';
 import ReactMarkdown from 'react-markdown';
-import { fetchAPI } from '../../lib/api';
 import { createClient } from 'contentful';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
@@ -12,9 +11,7 @@ const client = createClient({
   });
 
 const SoundCheckPage = ({ sc }) => {
-    console.log('what string', sc);
     const { title, description, category, featured, thumbnail, writer, content } = sc.fields;
-
     const body = documentToReactComponents(content);
 
     // Get writers from post object
