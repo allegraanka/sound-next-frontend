@@ -3,7 +3,6 @@ import Tonight from '../components/Tonight';
 import FeaturedPosts from '../components/FeaturedPosts';
 import EmailCapture from '../components/EmailCapture';
 import Link from 'next/link';
-import { fetchAPI } from '../lib/api';
 import { createClient } from 'contentful';
 
 const client = createClient({
@@ -26,7 +25,7 @@ const HomePage = ({ shows, featured }) => {
       </div>
       <div className={`bg-white w-screen h-60 flex items-center justify-center`}>
         <Link href='/about'>
-          <a className={`text-5xl uppercase`}>Get to know us →</a>
+          <a className={`text-4xl uppercase`}>Get to know us →</a>
         </Link>
       </div>
     </Layout>

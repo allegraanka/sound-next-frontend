@@ -45,6 +45,14 @@ export default function FeaturedPosts({ featured }) {
                                         </Link>
                                     </div>
                                 : ''}
+                                {post.fields.soundbytes === true ? 
+                                    <div className={``}>
+                                        <Link href='/soundbytes'><a className={`text-sm uppercase`}>Sound Bytes</a></Link>
+                                        <Link href={`${post.fields.soundbytes === true ? '/soundbytes/' : ''}${post.fields.slug}`}>
+                                            <a className={`text-xl block`}>{post.fields.title}</a>
+                                        </Link>
+                                    </div>
+                                : ''}
                                 <ReactMarkdown className={`text-sm`}>{post.fields.description}</ReactMarkdown>
                             </div>
                         </div>
