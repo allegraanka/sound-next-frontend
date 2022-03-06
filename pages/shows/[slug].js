@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Layout from '../../components/Layout';
-import { fetchAPI } from '../../lib/api';
 import { createClient } from 'contentful';
 
 const client = createClient({

@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Layout from '../../components/Layout';
 import Image from 'next/image';
-import { fetchAPI } from '../../lib/api';
 import { createClient } from 'contentful';
 
 const SoundCheckPage = ({ soundchecks }) => {
@@ -14,7 +13,7 @@ const SoundCheckPage = ({ soundchecks }) => {
           <div className={`w-full px-4 md:w-3/4 xl:w-1/2`}>
               <div className={`my-8`}>
                 <h1 className={`text-5xl`}>Sound Check Artist Spotlights</h1>
-                <div className={`text-xl`}>Welcome to our rapid-fire series that spotlights artists with questions that we hope will be fun to answer and even more fun to read.</div>
+                <div className={`text-xl`}>Sound Check is an interview series where we ask bands questions that we think will make for interesting conversation and a fun read.</div>
               </div>
               {filteredSCs.map((sc) => (
                 <div key={sc.sys.id} className={`my-4`}>

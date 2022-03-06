@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Layout from '../../components/Layout';
 import Image from 'next/image';
-import { fetchAPI } from '../../lib/api';
 import { createClient } from 'contentful';
 import ReactMarkdown from 'react-markdown';
 
@@ -9,8 +8,6 @@ const PostsPage = ({ posts }) => {
   const filteredPosts = posts.filter(post => {
     return post.fields.post === true;
   });
-
-  console.log('filtered posts', filteredPosts);
 
   return(
     <Layout title='The Sound | Blog'>
@@ -37,6 +34,9 @@ const PostsPage = ({ posts }) => {
               </div>
             </div>
           ))}
+          {filteredPosts.length === 0 && (
+                <span>Check back soon for new posts!</span>
+            )}
       </div>
     </Layout>
   );

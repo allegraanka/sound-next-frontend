@@ -37,7 +37,12 @@ const Navbar = () => {
                         </li>
                         <li className={`inline`}>
                             <Link href='/soundcheck'>
-                                <a className={`transition duration-300`}>Sound Check Interview Series</a>
+                                <a className={`transition duration-300`}>Sound Check Series</a>
+                            </Link>
+                        </li>
+                        <li className={`inline`}>
+                            <Link href='/soundbytes'>
+                                <a className={`transition duration-300`}>Sound Bytes</a>
                             </Link>
                         </li>
                         <li className={`inline`}>
@@ -83,7 +88,12 @@ const Navbar = () => {
                             </li>
                             <li className={``}>
                                 <Link href='/soundcheck'>
-                                    <a className={`block text-xl uppercase px-2 transition duration-300`}>Sound Check Interview Series</a>
+                                    <a className={`block text-xl uppercase px-2 transition duration-300`}>Sound Check Series</a>
+                                </Link>
+                            </li>
+                            <li className={``}>
+                                <Link href='/soundbytes'>
+                                    <a className={`block text-xl uppercase px-2 transition duration-300`}>Sound Bytes</a>
                                 </Link>
                             </li>
                             <li className={``}>
