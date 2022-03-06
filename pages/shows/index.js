@@ -1,6 +1,5 @@
 import Layout from '../../components/Layout';
 import ShowComponent from '../../components/ShowComponent';
-import { fetchAPI } from '../../lib/api';
 import { createClient } from 'contentful';
 
 const ShowsPage = ({ shows }) => {
@@ -8,7 +7,7 @@ const ShowsPage = ({ shows }) => {
         <Layout title='The Sound | Upcoming Shows'>
             <div className={`mb-12 w-full p-8`}>
                 <div className={`lg:px-8`}>
-                <h1 className={`text-5xl text-black`}>Upcoming Shows</h1>
+                <h1 className={`text-7xl text-black mb-12`}>Upcoming Shows</h1>
                 {shows.length === 0 && <p>There are no upcoming shows right now!</p>}
                     {shows.map((show) => (
                         <div key={show.sys.id}>
@@ -17,6 +16,7 @@ const ShowsPage = ({ shows }) => {
                             </div>
                         </div>
                     ))}
+                    <div className={`w-1/2 mx-auto`}>paginator</div>
                 </div>
             </div>
         </Layout>  
@@ -51,8 +51,8 @@ export async function getStaticProps() {
     return {
         props: {
           shows: datetimeSorted,
-          revalidate: 1,
-        }
+        },
+        revalidate: 1,
       }
   }
 

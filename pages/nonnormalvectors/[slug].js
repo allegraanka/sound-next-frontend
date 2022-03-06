@@ -13,7 +13,7 @@ const client = createClient({
 
 const NonNormalVectorsPage = ({ episode }) => {
     console.log('episodoidiosdi', episode);
-    const { title, description, content, category, featured, thumbnail, writer } = episode.fields;
+    const { title, description, content, category, featured, thumbnail, writer, url } = episode.fields;
 
     const body = documentToReactComponents(content);
 
@@ -42,7 +42,7 @@ const NonNormalVectorsPage = ({ episode }) => {
                     <div className={`w-full lg:w-3/4`}>
                         <h2 className={`bg-white w-fit text-2xl my-4`}>{description}</h2>
                         <div className={`bg-white w-fit mb-8`}>{body}</div>
-                        <a href='#' className={`bg-white w-fit text-3xl`}>Listen now!</a>
+                        <a href={url} target='_blank' rel='noreferrer' className={`bg-white w-fit text-3xl`}>Listen now!</a>
                     </div>
                 </article>
                 <div className={`bg-white w-fit my-8`}>

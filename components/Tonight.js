@@ -8,7 +8,7 @@ const Tonight = ({ shows }) => {
         const day = date.getDate();
         const month = date.getMonth()+1;
         const year = date.getFullYear();
-        const formattedDate = `${month}.${day}.${year}`;
+        const formattedDate = `${month}/${day}/${year}`;
         return formattedDate;
     }
 
@@ -26,7 +26,7 @@ const Tonight = ({ shows }) => {
     });
 
     return(
-        <div className={`bg-white my-12 p-6 shadow-xl`}>
+        <div className={`bg-white w-fit my-12 mx-auto p-6 shadow-2xl`}>
             <div className={`text-3xl`}>{formatDate(current)}</div>
             <h2 className={`text-5xl text-black drop-shadow-md`}>Rochester Tonight</h2>
 
