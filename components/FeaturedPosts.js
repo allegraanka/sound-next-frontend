@@ -25,7 +25,7 @@ export default function FeaturedPosts({ featured }) {
                                 {post.fields.post === true ? <Link href='/posts'><a className={`text-sm uppercase`}>Sound Board</a></Link> : ''}
                                 {post.fields.soundcheck === true ? <Link href='/soundcheck'><a className={`text-sm uppercase`}>Sound Check</a></Link> : ''}
                                 {post.fields.nnv === true ? <Link href='/nonnormalvectors'><a className={`text-sm uppercase`}>Non Normal Vectors</a></Link> : ''}
-                                <Link href={`/posts/${post.fields.slug}`}>
+                                <Link href={`${post.fields.nnv === true ? '/nonnormalvectors/' : '/posts/'}${post.fields.slug}`}>
                                     <a className={`text-xl block`}>{post.fields.title}</a>
                                 </Link>
                                 <ReactMarkdown className={`text-sm`}>{post.fields.description}</ReactMarkdown>
