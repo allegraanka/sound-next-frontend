@@ -9,7 +9,7 @@ const ShowComponent = ({ show }) => {
     }
 
     return(
-        <div className={`w-full md:w-3/4 xl:w-1/2 mx-auto my-8`}>
+        <div className={`w-full my-8`}>
             <div className={`bg-white text-black`}>
                 <div className={`bg-white text-black`}>
                     <div className={`w-fit flex items-center`}>

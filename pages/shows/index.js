@@ -6,7 +6,7 @@ const ShowsPage = ({ shows }) => {
     return(
         <Layout title='The Sound | Upcoming Shows'>
             <div className={`mb-12 w-full p-8`}>
-                <div className={`lg:px-8`}>
+                <div className={`md:w-3/4 lg:px-8 xl:w-1/2 mx-auto`}>
                 <h1 className={`text-7xl text-black mb-12`}>Upcoming Shows</h1>
                 {shows.length === 0 && <p>There are no upcoming shows right now!</p>}
                     {shows.map((show) => (
