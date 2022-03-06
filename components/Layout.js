@@ -4,7 +4,7 @@ import Footer from './Footer';
 
 export default function Layout({ title, keywords, description, children }) {
     return (
-        <div className={`debug-screens`}>
+        <div className={``}>
             <Head>
                 <title>{title}</title>
                 <meta name='description' content={description}/>
