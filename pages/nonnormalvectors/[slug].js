@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Layout from '../../components/Layout';
 import Image from 'next/image';
-import { fetchAPI } from "../../lib/api";
 import { createClient } from 'contentful';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import ReactMarkdown from 'react-markdown';
@@ -16,6 +15,8 @@ const NonNormalVectorsPage = ({ episode }) => {
     const { title, description, content, category, featured, thumbnail, writer, url } = episode.fields;
 
     const body = documentToReactComponents(content);
+
+    console.log('writer', writer);
 
     // Get writers from post object
     const writers = episode.fields.writer.map((writer) => {
