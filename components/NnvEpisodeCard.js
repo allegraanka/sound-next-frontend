@@ -4,7 +4,7 @@ import Image from 'next/image';
 export default function NnvEpisodeCard({ episode }) {
     const { title, description, slug, category, thumbnail, writer } = episode.fields;
     return (
-        <div>
+        <div className={`my-12 md:m-12`}>
             <Image 
                 src={`https:${thumbnail.fields.file.url}`}
                 width={thumbnail.fields.file.details.image.width}
