@@ -15,6 +15,16 @@ const SoundBytePage = ({ sb }) => {
     const { title, description, category, featured, thumbnail, writer, content } = sb.fields;
     const body = documentToReactComponents(content);
 
+    // Date formatter
+    const formatDate = (dateInput) => {
+        var options = {  weekday: 'short', month: 'numeric', day: 'numeric'};
+        const date = new Date(dateInput).toLocaleDateString('en-us', options);
+        return date;
+    }
+
+    // Get and format publish date from post object
+    const publishDate = formatDate(sb.sys.createdAt);
+
     // Get writers from post object
     const writers = sb.fields.writer.map((writer) => {
         return writer.fields.name;
@@ -35,7 +45,7 @@ const SoundBytePage = ({ sb }) => {
                             alt={thumbnail.fields.description}
                         />
                         <h1 className={`text-5xl mt-4`}>{title}</h1>
-                        <p className={`uppercase text-sm`}>Written by <a href="#">{writers}</a> on {sb.sys.createdAt}</p>
+                        <p className={`uppercase text-sm`}>Written by <a href="#">{writers}</a> on {publishDate}</p>
                     </div>
                     <div className={`bg-white w-full lg:w-3/4`}>
                         <h2 className={`text-2xl my-4`}>{description}</h2>

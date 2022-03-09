@@ -16,7 +16,15 @@ const NonNormalVectorsPage = ({ episode }) => {
 
     const body = documentToReactComponents(content);
 
-    console.log('writer', writer);
+    // Date formatter
+    const formatDate = (dateInput) => {
+        var options = {  weekday: 'short', month: 'numeric', day: 'numeric'};
+        const date = new Date(dateInput).toLocaleDateString('en-us', options);
+        return date;
+    }
+
+    // Get and format publish date from post object
+    const publishDate = formatDate(episode.sys.createdAt);
 
     // Get writers from post object
     const writers = episode.fields.writer.map((writer) => {
@@ -38,7 +46,7 @@ const NonNormalVectorsPage = ({ episode }) => {
                             alt={thumbnail.fields.description}
                         />
                         <h1 className={`bg-white w-fit text-5xl mt-4`}>{title}</h1>
-                        <p className={`uppercase text-sm`}>Written by <a href="#">{writers}</a> on {episode.sys.createdAt}</p>
+                        <p className={`uppercase text-sm`}>Written by <a href="#">{writers}</a> on {publishDate}</p>
                     </div>
                     <div className={`w-full lg:w-3/4`}>
                         <h2 className={`bg-white w-fit text-2xl my-4`}>{description}</h2>

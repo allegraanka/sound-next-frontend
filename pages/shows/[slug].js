@@ -25,7 +25,7 @@ const ShowPage = ({ show }) => {
                         <p className={``}>{show.fields.promoter ? show.fields.promoter : ''}</p>
                         <p className={`text-xl`}>{formatDate(show.fields.date)}</p>
                         <h1 className={`text-6xl`}>{show.fields.headliner}</h1>
-                        <p className={`text-2xl`}>{show.fields.support}</p>
+                        <p className={`text-2xl`}>{show.fields.support ? show.fields.support.join(', ') : ''}</p>
                     </div>
                     <div className={``}>
                         <div className={`text-2xl uppercase font-semibold`}>{show.fields.venue}</div>

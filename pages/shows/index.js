@@ -51,8 +51,6 @@ export async function getStaticProps() {
         const y = new Date(b.fields.date);
         return x - y;
     });
-
-    console.log('date sorted --------------> ', datetimeSorted);
   
     return {
         props: {
