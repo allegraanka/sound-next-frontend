@@ -32,11 +32,15 @@ export async function getStaticProps() {
     const res = await client.getEntries({ content_type: 'show' });
 
     const upcomingShows = res.items.filter((show) => {
-        const showDate = new Date(show.fields.date).toLocaleDateString();
-        const current = new Date().toLocaleDateString();
+        const showDate = new Date(show.fields.date);
+        const current = new Date();
+
+        // IF THE SHOW IS TODAY, ADD isToday PROPERTY FOR TONIGHT COMPONENT TO FILTER AGAINST
         if (showDate === current) {
             show.isToday = true;
         }
+
+        // RETURN SHOWS WITH TODAY'S DATE OR GREATER
         if (showDate >= current) {
             return show;
         };
@@ -47,6 +51,8 @@ export async function getStaticProps() {
         const y = new Date(b.fields.date);
         return x - y;
     });
+
+    console.log('date sorted --------------> ', datetimeSorted);
   
     return {
         props: {
