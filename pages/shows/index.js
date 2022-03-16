@@ -1,6 +1,6 @@
 import Layout from '../../components/Layout';
 import { createClient } from 'contentful';
-import PaginatedItems from '../../components/Paginator';
+import ShowComponent from '../../components/ShowComponent';
 
 const ShowsPage = ({ shows }) => {
     return(
@@ -9,7 +9,9 @@ const ShowsPage = ({ shows }) => {
                 <div className={`md:w-3/4 lg:px-8 xl:w-1/2 mx-auto`}>
                     <h1 className={`text-7xl text-black mb-12`}>Upcoming Shows</h1>
                     {shows.length === 0 && <p>There are no upcoming shows right now!</p>}
-                    <PaginatedItems items={shows} itemsPerPage={10} />
+                    {shows && shows.map((show) => (
+                        <ShowComponent key={show.id} show={show}/>
+                    ))}
                 </div>
             </div>
         </Layout>  
@@ -47,16 +49,13 @@ export async function getStaticProps() {
         return x - y;
     });
 
-    const totalShowsCount = datetimeSorted.length > 0 ? datetimeSorted.length : 0;
-    const pageSize = 15;
-    const totalPages = Math.ceil(totalShowsCount / pageSize);
+    // const totalShowsCount = datetimeSorted.length > 0 ? datetimeSorted.length : 0;
+    // const pageSize = 15;
+    // const totalPages = Math.ceil(totalShowsCount / pageSize);
   
     return {
         props: {
-          shows: datetimeSorted,
-          totalShowsCount,
-          pageSize,
-          totalPages
+          shows: datetimeSorted
         },
         revalidate: 1,
       }

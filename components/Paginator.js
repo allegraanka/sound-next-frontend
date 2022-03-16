@@ -37,6 +37,7 @@ export default function PaginatedItems({ items, itemsPerPage }) {
     <>
       <Items currentItems={currentItems} />
       <ReactPaginate
+        className={`inline`}
         breakLabel="..."
         nextLabel="next >"
         onPageChange={handlePageClick}
