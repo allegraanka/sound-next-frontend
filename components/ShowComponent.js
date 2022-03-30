@@ -25,7 +25,7 @@ const ShowComponent = ({ show }) => {
                     <div className={`text-lg uppercase`}>{show.fields.venue}
                         <span className={`text-xl mx-2`}>| {show.fields.ticketPrice}</span>
                     </div>
-                    <div className={`text-xs uppercase`}>\\Genre// {show.fields.genre}</div>
+                    <div className={`text-xs uppercase`}>Genre→ {show.fields.genre}</div>
                 </div>
             </div>
         </div>
