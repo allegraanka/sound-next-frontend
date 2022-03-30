@@ -1,7 +1,8 @@
 import Layout from '../../components/Layout';
-import ShowComponent from '../../components/ShowComponent';
 import { createClient } from 'contentful';
 import Flyer from '../../components/Flyer';
+import ShowComponent from '../../components/ShowComponent';
+
 
 const ShowsPage = ({ shows, flyers }) => {
     return(
