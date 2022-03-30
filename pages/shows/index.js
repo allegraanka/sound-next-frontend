@@ -1,17 +1,31 @@
 import Layout from '../../components/Layout';
 import { createClient } from 'contentful';
+import Flyer from '../../components/Flyer';
 import ShowComponent from '../../components/ShowComponent';
 
-const ShowsPage = ({ shows }) => {
+
+const ShowsPage = ({ shows, flyers }) => {
     return(
         <Layout title='The Sound | Upcoming Shows'>
-            <div className={`mb-12 w-full p-8`}>
-                <div className={`md:w-3/4 lg:px-8 xl:w-1/2 mx-auto`}>
-                    <h1 className={`text-7xl text-black mb-12`}>Upcoming Shows</h1>
-                    {shows.length === 0 && <p>There are no upcoming shows right now!</p>}
-                    {shows && shows.map((show) => (
-                        <ShowComponent key={show.id} show={show}/>
-                    ))}
+            <div className={`grid place-items-center min-h-screen`}>
+                <div className={`p-4 mx-auto`}>
+                    <h1 className={`text-6xl text-black`}>Upcoming Shows</h1>
+                    <p className={`text-sm uppercase`}>Upcoming shows in Rochester. Check <a href='https://www.instagram.com/thesoundroc/' target='_blank' rel="noreferrer">Instagram</a> for updates, too!</p>
+                </div>
+                <div className={`p-4 max-w-5xl grid grid-cols-1 lg:grid-cols-5 gap-4`}>
+                    <div className={`mx-auto lg:col-span-2`}>
+                        <Flyer flyers={flyers}/>
+                    </div>
+                    <div className={`mx-auto lg:col-span-3 lg:mx-12`}>
+                        {shows.length === 0 && <p>There are no upcoming shows right now!</p>}
+                        {shows.map((show) => (
+                            <div key={show.sys.id}>
+                                <div className={`flex items-start`}>
+                                    <ShowComponent show={show}/>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </Layout>  
@@ -24,11 +38,10 @@ export async function getStaticProps() {
         accessToken: process.env.CONTENTFUL_ACCESS_KEY
       });
 
-    const res = await client.getEntries({ 
-        content_type: 'show',
-    });
+    const shows = await client.getEntries({ content_type: 'show' });
+    const flyers = await client.getEntries({ content_type: 'showFlyer' });
 
-    const upcomingShows = res.items.filter((show) => {
+    const upcomingShows = shows.items.filter((show) => {
         const showDate = new Date(show.fields.date);
         const current = new Date();
 
@@ -49,13 +62,21 @@ export async function getStaticProps() {
         return x - y;
     });
 
-    // const totalShowsCount = datetimeSorted.length > 0 ? datetimeSorted.length : 0;
-    // const pageSize = 15;
-    // const totalPages = Math.ceil(totalShowsCount / pageSize);
+    const flyersUrls = flyers.items.map((flyer) => {
+        let flyerData = {
+            id: flyer.sys.id,
+            featured: flyer.fields.featured,
+            imageUrl: flyer.fields.image.fields.file.url,
+            width: flyer.fields.image.fields.file.details.image.width,
+            height: flyer.fields.image.fields.file.details.image.height,
+        }
+        return flyerData;
+    })
   
     return {
         props: {
-          shows: datetimeSorted
+          shows: datetimeSorted,
+          flyers: flyersUrls
         },
         revalidate: 1,
       }
