@@ -1,61 +1,39 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import ShowComponent from "./ShowComponent";
 
-export default function Paginator({ items, itemsPerPage, pageLimit }) {
-  const [pages] = useState(Math.ceil(items.length / itemsPerPage));
+export default function Paginator({ shows }) {
   const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
+  const totalItems = shows.length;
 
-  function getNextPage() {
-    setCurrentPage((page) => page + 1);
+  const idxOfLastItem = currentPage * itemsPerPage;
+  const idxOfFirstItem = idxOfLastItem - itemsPerPage;
+  const currentShows = shows.slice(idxOfFirstItem, idxOfLastItem);
+
+  const pageNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
+    pageNumbers.push(i);
   }
 
-  function getPrevPage() {
-    setCurrentPage((page) => page - 1);
-  }
+  // CHANGE PAGE
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  function changePage(event) {
-    const pageNumber = Number(event.target.textContent);
-    setCurrentPage(pageNumber);
-  }
-
-  const getPaginatedItems = () => {
-    const startIndex = currentPage * pageLimit - pageLimit;
-    const endIndex = startIndex + pageLimit;
-    console.log('what is ittttttt', items.slice(startIndex, endIndex));
-    return items.slice(startIndex, endIndex);
-  }
-
-  return (
+  return(
     <div>
-
-      {currentItems && currentItems.map((show) => (
+      {currentShows && currentShows.map((show) => (
          <ShowComponent key={show.id} show={show}/>
       ))}
 
-      <div className={`flex justify-between`}>
-        <div className={`flex space-x-1`}>
-          <div className={`bg-black text-white w-fit px-4 py-2`}>
-            FIRST
-          </div>
-          <div 
-            className={`bg-black text-white w-fit px-4 py-2 ${currentPage === 1 ? 'disabled' : ''}`}
-            onClick={getPrevPage}>
-            PREV
-          </div>
-        </div>
-
-        <div className={`flex space-x-1`}>
-          <div 
-            className={`bg-black text-white w-fit px-4 py-2 ${currentPage === pages ? 'disabled' : ''}`}
-            onClick={getNextPage}>
-            NEXT
-          </div>
-          <div className={`bg-black text-white w-fit px-4 py-2`}>
-            LAST
-          </div>
-        </div>
-      </div>
-
+      <ul className='flex mb-12 space-x-6'>
+        {pageNumbers.map(number => (
+          <a key={number} onClick={() => paginate(number)}>
+            <li className={`flex items-center justify-center w-10 h-10 bg-transparent border-2`}>
+              {number}
+            </li>
+          </a>
+        ))}
+      </ul>
     </div>
   );
 }
