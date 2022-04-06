@@ -2,6 +2,7 @@ import Layout from '../../components/Layout';
 import { createClient } from 'contentful';
 import Flyer from '../../components/Flyer';
 import ShowComponent from '../../components/ShowComponent';
+import Paginator from '../../components/Paginator';
 
 
 const ShowsPage = ({ shows, flyers }) => {
@@ -18,13 +19,7 @@ const ShowsPage = ({ shows, flyers }) => {
                     </div>
                     <div className={`mx-auto lg:col-span-3 lg:mx-12`}>
                         {shows.length === 0 && <p>There are no upcoming shows right now!</p>}
-                        {shows.map((show) => (
-                            <div key={show.sys.id}>
-                                <div className={`flex items-start`}>
-                                    <ShowComponent show={show}/>
-                                </div>
-                            </div>
-                        ))}
+                        <Paginator shows={shows}/>
                     </div>
                 </div>
             </div>
