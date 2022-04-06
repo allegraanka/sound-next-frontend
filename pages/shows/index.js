@@ -17,7 +17,7 @@ const ShowsPage = ({ shows, flyers }) => {
                     <div className={`mx-auto lg:col-span-2`}>
                         <Flyer flyers={flyers}/>
                     </div>
-                    <div className={`mx-auto lg:col-span-3 lg:mx-12`}>
+                    <div className={`mx-auto w-full lg:col-span-3 lg:mx-12`}>
                         {shows.length === 0 && <p>There are no upcoming shows right now!</p>}
                         <Paginator shows={shows}/>
                     </div>

@@ -25,14 +25,18 @@ export default function Paginator({ shows }) {
          <ShowComponent key={show.id} show={show}/>
       ))}
 
-      <ul className='flex mb-12 space-x-6'>
+      <ul className='flex items-center mb-12'>
+        <span className={`mx-2`}>←</span>
+
         {pageNumbers.map(number => (
           <a key={number} onClick={() => paginate(number)}>
-            <li className={`flex items-center justify-center w-10 h-10 bg-transparent border-2`}>
+            <li className={`flex items-center justify-center w-10 h-10 border-2 mx-2`}>
               {number}
             </li>
           </a>
         ))}
+        
+        <span className={`mx-2`}>→</span>
       </ul>
     </div>
   );
