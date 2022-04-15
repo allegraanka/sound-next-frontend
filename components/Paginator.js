@@ -20,7 +20,7 @@ export default function Paginator({ shows }) {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return(
-    <div>
+    <div className={``}>
       {currentShows && currentShows.map((show) => (
          <ShowComponent key={show.id} show={show}/>
       ))}

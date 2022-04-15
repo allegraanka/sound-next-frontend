@@ -1,7 +1,6 @@
 import Layout from '../../components/Layout';
 import { createClient } from 'contentful';
 import Flyer from '../../components/Flyer';
-import ShowComponent from '../../components/ShowComponent';
 import Paginator from '../../components/Paginator';
 
 
