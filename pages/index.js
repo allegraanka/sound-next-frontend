@@ -2,6 +2,7 @@ import Layout from '../components/Layout';
 import Tonight from '../components/Tonight';
 import FeaturedPosts from '../components/FeaturedPosts';
 import EmailCapture from '../components/EmailCapture';
+import PartnerUp from '../components/PartnerUp';
 import Link from 'next/link';
 import { createClient } from 'contentful';
 
@@ -20,6 +21,7 @@ const HomePage = ({ shows, featured }) => {
           <div className={`bg-white text-2xl my-2 w-fit md:text-left`}>The Sound is your source for curated live music in Rochester, NY and a music community incubator initiative. Learn more <Link href='/about'><a>about us</a></Link>.</div>
           <Tonight shows={shows}/>
           <EmailCapture />
+          <PartnerUp />
         </div>
         <FeaturedPosts featured={featured}/>
       </div>
