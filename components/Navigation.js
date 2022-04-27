@@ -35,7 +35,7 @@ const Navbar = () => {
                                 <a className={`transition duration-300`}>Sound Board Blog</a>
                             </Link>
                         </li>
-                        <li className={`inline`}>
+                        {/* <li className={`inline`}>
                             <Link href='/soundcheck'>
                                 <a className={`transition duration-300`}>Sound Check Series</a>
                             </Link>
@@ -49,7 +49,7 @@ const Navbar = () => {
                             <Link href='/nonnormalvectors'>
                                 <a className={`transition duration-300`}>NNV Podcast</a>
                             </Link>
-                        </li>
+                        </li> */}
                     </ul>
 
                     <div className={`lg:hidden z-50 flex items-center`}>
@@ -86,7 +86,7 @@ const Navbar = () => {
                                     <a className={`block text-xl uppercase px-2 transition duration-300`}>Sound Board Blog</a>
                                 </Link>
                             </li>
-                            <li className={``}>
+                            {/* <li className={``}>
                                 <Link href='/soundcheck'>
                                     <a className={`block text-xl uppercase px-2 transition duration-300`}>Sound Check Series</a>
                                 </Link>
@@ -100,7 +100,7 @@ const Navbar = () => {
                                 <Link href='/nonnormalvectors'>
                                     <a className={`block text-xl uppercase px-2 transition duration-300`}>NNV Podcast</a>
                                 </Link>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </div>
