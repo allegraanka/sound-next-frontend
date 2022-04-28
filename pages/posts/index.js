@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Layout from '../../components/Layout';
 import Image from 'next/image';
 import { createClient } from 'contentful';
-import ReactMarkdown from 'react-markdown';
 
 const PostsPage = ({ posts }) => {
   const filteredPosts = posts.filter(post => {
@@ -30,7 +29,7 @@ const PostsPage = ({ posts }) => {
                     <h2 className={`text-2xl text-red-dark hover:text-red-light`}>{post.fields.title}</h2>
                   </a>
                 </Link>
-                <ReactMarkdown className={`w-fit`}>{post.fields.description}</ReactMarkdown>
+                <div className={`w-fit`}>{post.fields.description}</div>
               </div>
             </div>
           ))}
@@ -53,8 +52,7 @@ export async function getStaticProps() {
   return {
     props: {
       posts: res.items,
-    },
-    revalidate: 1,
+    }
   }
 }
 

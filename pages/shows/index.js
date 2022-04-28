@@ -1,21 +1,22 @@
 import Layout from '../../components/Layout';
 import { createClient } from 'contentful';
-import Flyer from '../../components/Flyer';
+// import Flyer from '../../components/Flyer';
 import Paginator from '../../components/Paginator';
 
 
 const ShowsPage = ({ shows, flyers }) => {
+    console.log('flyers ', flyers);
     return(
         <Layout title='The Sound | Upcoming Shows'>
             <div className={`grid place-items-center min-h-screen`}>
                 <div className={`p-4 mx-auto`}>
                     <h1 className={`text-6xl text-black`}>Upcoming Shows</h1>
-                    <p className={`text-sm uppercase`}>Upcoming shows in Rochester. Check <a href='https://www.instagram.com/thesoundroc/' target='_blank' rel="noreferrer">Instagram</a> for updates, too!</p>
+                    <p className={`text-md uppercase`}>Upcoming shows in Rochester. Check <a href='https://www.instagram.com/thesoundroc/' target='_blank' rel="noreferrer">Instagram</a> for updates, too!</p>
                 </div>
                 <div className={`p-4 max-w-5xl grid grid-cols-1 lg:grid-cols-5 gap-4`}>
-                    <div className={`mx-auto lg:col-span-2`}>
+                    {/* <div className={`mx-auto lg:col-span-2`}>
                         <Flyer flyers={flyers}/>
-                    </div>
+                    </div> */}
                     <div className={`mx-auto w-full lg:col-span-3 lg:mx-12`}>
                         {shows.length === 0 && <p>There are no upcoming shows right now!</p>}
                         <Paginator shows={shows}/>
@@ -72,7 +73,7 @@ export async function getStaticProps() {
           shows: datetimeSorted,
           flyers: flyersUrls
         },
-        revalidate: 1,
+        revalidate: 3600, // revalidates at most once every hour
       }
   }
 

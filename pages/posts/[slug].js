@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import Layout from '../../components/Layout';
 import Image from 'next/image';
-import ReactMarkdown from 'react-markdown';
 import { createClient } from 'contentful';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import {BLOCKS, INLINES} from '@contentful/rich-text-types';
 
 const client = createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
@@ -11,8 +11,19 @@ const client = createClient({
   });
 
 const PostPage = ({ post }) => {
-    const { title, description, category, featured, thumbnail, writer, content } = post.fields;
-    const body = documentToReactComponents(content);
+    const { title, description, thumbnail, content } = post.fields;
+
+    const RICHTEXT_OPTIONS = {
+        renderNode: {
+            [BLOCKS.PARAGRAPH]: (node, children) => {
+                return <p className={`my-8 w-full text-lg text-black`}>{children}</p>
+            },
+            [INLINES.HYPERLINK]: (node, children) => {
+                return <a href={node.data.uri}>{children}</a>
+            }
+        }
+    }
+    const body = documentToReactComponents(content, RICHTEXT_OPTIONS);
 
     // Date formatter
     const formatDate = (dateInput) => {
@@ -52,7 +63,7 @@ const PostPage = ({ post }) => {
                         <p className={`uppercase text-sm`}>Written by <a href="#">{writers}</a> on {publishDate}</p>
                     </div>
                     <div className={`bg-white py-4 w-full lg:w-3/4`}>
-                        <ReactMarkdown className={`text-2xl my-4`}>{description}</ReactMarkdown>
+                        <div className={`text-2xl my-4`}>{description}</div>
                         <div>{body}</div>
                     </div>
                 </article>
@@ -93,7 +104,6 @@ export async function getStaticProps({ params }) {
     return {
         props: {
             post: items[0],
-            revalidate: 1,
         }
     }
 }

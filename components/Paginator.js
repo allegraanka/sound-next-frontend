@@ -30,7 +30,7 @@ export default function Paginator({ shows }) {
 
         {pageNumbers.map(number => (
           <a key={number} onClick={() => paginate(number)}>
-            <li className={`flex items-center justify-center w-10 h-10 border-2 mx-2`}>
+            <li className={`flex items-center justify-center w-10 h-10 border-2 rounded-full mx-2`}>
               {number}
             </li>
           </a>

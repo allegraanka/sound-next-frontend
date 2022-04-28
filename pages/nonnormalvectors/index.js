@@ -1,7 +1,4 @@
-import Link from 'next/link';
-import NextImage from '../../components/Image';
 import Layout from '../../components/Layout';
-import { fetchAPI } from '../../lib/api';
 import { createClient } from 'contentful';
 import NnvEpisodeCard from '../../components/NnvEpisodeCard';
 
@@ -36,8 +33,7 @@ export async function getStaticProps() {
   return {
     props: {
       nnvEpisodes: res.items,
-    },
-    revalidate: 1,
+    }
   }
 }
 
