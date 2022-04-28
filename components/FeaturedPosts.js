@@ -6,7 +6,7 @@ export default function FeaturedPosts({ featured }) {
     return(
         <div className={`p-4`}>
             <div className={`my-4`}>
-                <h1 className={`text-4xl`}>What&apos;s happening in Rochester</h1>
+                <h1 className={`text-5xl`}>Happening in Rochester</h1>
             </div>
             <div className={`grid grid-cols-1 md:grid-cols-2`}>
                 {featured && featured.map((post) => {

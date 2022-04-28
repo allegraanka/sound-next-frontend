@@ -47,8 +47,7 @@ export async function getStaticProps() {
   return {
     props: {
       soundbytes: res.items,
-    },
-    revalidate: 1,
+    }
   }
 }
 

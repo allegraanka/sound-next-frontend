@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Layout from '../../components/Layout';
-import ReactMarkdown from 'react-markdown';
 import { createClient } from 'contentful';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import {BLOCKS, INLINES} from '@contentful/rich-text-types';
 
 const client = createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
@@ -11,8 +11,19 @@ const client = createClient({
   });
 
 const SoundCheckPage = ({ sc }) => {
-    const { title, description, category, featured, thumbnail, writer, content } = sc.fields;
-    const body = documentToReactComponents(content);
+    const { title, description, thumbnail, content } = sc.fields;
+    
+    const RICHTEXT_OPTIONS = {
+        renderNode: {
+            [BLOCKS.PARAGRAPH]: (node, children) => {
+                return <p className={`my-8 w-full text-lg text-black`}>{children}</p>
+            },
+            [INLINES.HYPERLINK]: (node, children) => {
+                return <a href={node.data.uri}>{children}</a>
+            }
+        }
+    }
+    const body = documentToReactComponents(content, RICHTEXT_OPTIONS);
 
     // Date formatter
     const formatDate = (dateInput) => {

@@ -2,15 +2,26 @@ import Layout from '../components/Layout';
 import Image from 'next/image';
 import { createClient } from 'contentful';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import {BLOCKS, INLINES} from '@contentful/rich-text-types';
 
 
 export default function AboutPage({ about }) {
-    const { title, description, contentSection1, contentSection2, allegraBio, allegraPhoto, kateBio, katePhoto } = about.fields;
+    const { title, description, contentSection1, contentSection2, allegraBio, kateBio } = about.fields;
 
-    const formattedBody1 = documentToReactComponents(contentSection1);
-    const formattedBody2 = documentToReactComponents(contentSection2);
-    const formattedKateBio = documentToReactComponents(kateBio);
-    const formattedAllegraBio = documentToReactComponents(allegraBio);
+    const RICHTEXT_OPTIONS = {
+        renderNode: {
+            [BLOCKS.PARAGRAPH]: (node, children) => {
+                return <p className={`my-8 w-full text-xl text-black`}>{children}</p>
+            },
+            [INLINES.HYPERLINK]: (node, children) => {
+                return <a href={node.data.uri}>{children}</a>
+            }
+        }
+    }
+    const formattedBody1 = documentToReactComponents(contentSection1, RICHTEXT_OPTIONS);
+    const formattedBody2 = documentToReactComponents(contentSection2, RICHTEXT_OPTIONS);
+    const formattedKateBio = documentToReactComponents(kateBio, RICHTEXT_OPTIONS);
+    const formattedAllegraBio = documentToReactComponents(allegraBio, RICHTEXT_OPTIONS);
 
     return (
         <Layout title='The Sound | About Us'>
@@ -83,7 +94,6 @@ export async function getStaticProps() {
     return {
       props: {
         about: res.items[0]
-      },
-      revalidate: 1,
+      }
     }
   }
