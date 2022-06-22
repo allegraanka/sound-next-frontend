@@ -12,8 +12,6 @@ const client = createClient({
   });
 
 const HomePage = ({ shows, featured }) => {
-  console.log('shows', shows);
-  console.log('posts', featured);
   return (
     <Layout>
       <div className={`grid grid-cols-1 lg:grid-cols-2`}>
