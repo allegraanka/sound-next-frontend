@@ -4,10 +4,6 @@ import Image from 'next/image';
 import { createClient } from 'contentful';
 
 const PostsPage = ({ posts }) => {
-  const filteredPosts = posts.filter(post => {
-    return post.fields.post === true;
-  });
-
   return(
     <Layout title='The Sound | Blog'>
       <div className={`w-full px-4 md:w-3/4 xl:w-1/2`}>
@@ -15,7 +11,7 @@ const PostsPage = ({ posts }) => {
             <h1 className={`text-5xl`}>Sound Board</h1>
             <div className={`text-xl`}>Welcome to Sound Board, a blog where we cover shows, local music news, and the occasional long-form feature story on something remarkable and rad in Rochester music.</div>
           </div>
-          {filteredPosts.map((post) => (
+          {posts.map((post) => (
             <div key={post.sys.id} className={`my-12 w-fit`}>
               <div>
               <Image 
@@ -33,7 +29,7 @@ const PostsPage = ({ posts }) => {
               </div>
             </div>
           ))}
-          {filteredPosts.length === 0 && (
+          {posts.length === 0 && (
                 <span>Check back soon for new posts!</span>
             )}
       </div>
@@ -47,7 +43,7 @@ export async function getStaticProps() {
     accessToken: process.env.CONTENTFUL_ACCESS_KEY
   });
 
-  const res = await client.getEntries({ content_type: 'post' });
+  const res = await client.getEntries({ content_type: 'post', 'fields.post': true });
 
   return {
     props: {

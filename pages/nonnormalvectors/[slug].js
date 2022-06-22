@@ -11,7 +11,6 @@ const client = createClient({
   });
 
 const NonNormalVectorsPage = ({ episode }) => {
-    console.log('episodoidiosdi', episode);
     const { title, description, content, category, featured, thumbnail, writer, url } = episode.fields;
 
     const RICHTEXT_OPTIONS = {
@@ -77,7 +76,8 @@ const NonNormalVectorsPage = ({ episode }) => {
 
 export async function getStaticPaths() {
     const res = await client.getEntries({ 
-        content_type: 'post' 
+        content_type: 'post',
+        'fields.nnv': true
     });
 
     const paths = res.items.map(item => {
@@ -95,6 +95,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
     const {items} = await client.getEntries({
         content_type: 'post',
+        'fields.nnv': true,
         'fields.slug': params.slug
     });
 

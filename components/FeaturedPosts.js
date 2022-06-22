@@ -3,6 +3,7 @@ import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 
 export default function FeaturedPosts({ featured }) {
+    console.log('F E A T U R E D PO ST SSSSS ', featured)
     return(
         <div className={`p-4`}>
             <div className={`my-4`}>

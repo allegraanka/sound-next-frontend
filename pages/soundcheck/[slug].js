@@ -75,7 +75,8 @@ const SoundCheckPage = ({ sc }) => {
 
 export async function getStaticPaths() {
     const res = await client.getEntries({ 
-        content_type: 'post' 
+        content_type: 'post',
+        'fields.soundcheck': true
     });
 
     const paths = res.items.map(item => {
@@ -93,6 +94,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
     const {items} = await client.getEntries({
         content_type: 'post',
+        'fields.soundcheck': true,
         'fields.slug': params.slug
     });
 
