@@ -15,7 +15,7 @@ const HomePage = ({ shows, featured }) => {
   return (
     <Layout>
       <div className={`grid grid-cols-1 lg:grid-cols-2`}>
-        <div className={`p-4`}>
+        <div className={`p-2`}>
           <div className={`bg-white text-2xl my-2 w-fit md:text-left`}>The Sound is your source for curated live music in Rochester, NY and a music community incubator initiative. Learn more <Link href='/about'><a>about us</a></Link>.</div>
           <Tonight shows={shows}/>
           <EmailCapture />
