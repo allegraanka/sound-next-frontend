@@ -11,6 +11,7 @@ const client = createClient({
   });
 
 const SoundBytePage = ({ sb }) => {
+    console.log('soundbyte post----------', sb);
     const { title, description, thumbnail, content } = sb.fields;
 
     const RICHTEXT_OPTIONS = {
@@ -19,7 +20,7 @@ const SoundBytePage = ({ sb }) => {
                 return <p className={`my-8 w-full text-lg text-black`}>{children}</p>
             },
             [INLINES.HYPERLINK]: (node, children) => {
-                return <a href={node.data.uri}>{children}</a>
+                return node.data.uri ? <a href={node.data.uri}>{children}</a> : null
             }
         }
     }

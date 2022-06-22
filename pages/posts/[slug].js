@@ -19,7 +19,7 @@ const PostPage = ({ post }) => {
                 return <p className={`my-8 w-full text-lg text-black`}>{children}</p>
             },
             [INLINES.HYPERLINK]: (node, children) => {
-                return <a href={node.data.uri}>{children}</a>
+                return node.data.uri ? <a href={node.data.uri}>{children}</a> : null
             }
         }
     }
@@ -80,7 +80,8 @@ const PostPage = ({ post }) => {
 
 export async function getStaticPaths() {
     const res = await client.getEntries({ 
-        content_type: 'post' 
+        content_type: 'post',
+        'fields.post': true
     });
 
     const paths = res.items.map(item => {

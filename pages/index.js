@@ -35,15 +35,13 @@ const HomePage = ({ shows, featured }) => {
 export async function getStaticProps() {
   const [shows, posts] = await Promise.all([
     client.getEntries({ content_type: 'show' }),
-    client.getEntries({ content_type: 'post' }),
+    client.getEntries({ content_type: 'post', 'fields.featured': true }),
   ])
-  
-  const featuredPosts = posts.items.filter(post => post.fields.featured === true);
 
   return {
     props: {
       shows: shows.items,
-      featured: featuredPosts,
+      featured: posts.items,
     }
   }
 }
