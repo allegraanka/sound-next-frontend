@@ -3,14 +3,20 @@ import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 
 export default function FeaturedPosts({ featured }) {
-    console.log('F E A T U R E D PO ST SSSSS ', featured)
+    const recentFeatured = featured.filter((featured) => {
+        const featuredDate = new Date(featured.sys.createdAt);
+        const d = new Date();
+        const compareDate = d.setMonth(d.getMonth()-1);
+        return featuredDate >= compareDate;
+    })
+
     return(
         <div className={`p-4`}>
             <div className={`my-4`}>
                 <h1 className={`text-5xl`}>Happening in Rochester</h1>
             </div>
             <div className={`grid grid-cols-1 md:grid-cols-2`}>
-                {featured && featured.map((post) => {
+                {recentFeatured && recentFeatured.map((post) => {
                     return (
                         <div key={post.sys.id} className={`bg-white pb-4 my-4 md:mx-4 col-span-1`}>
                             <div className={``}>
