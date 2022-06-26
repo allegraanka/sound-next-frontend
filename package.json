@@ -30,6 +30,7 @@
     "autoprefixer": "^10.4.2",
     "eslint": "8.10.0",
     "eslint-config-next": "12.1.0",
+    "g-sheets-api": "^2.1.2",
     "postcss": "^8.4.7",
     "tailwindcss": "^3.0.23",
     "tailwindcss-debug-screens": "^2.2.1"
