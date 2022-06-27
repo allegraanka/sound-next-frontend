@@ -1,0 +1,39 @@
+.aboutComponentContainer {
+    align-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding: 30px 0px;
+    border-top: 2px solid #262627;
+    border-bottom: 2px solid #262627;
+}
+.aboutComponentImageContainer {
+    flex: none;
+    height: 250px;
+    margin: 0px 0px 30px 0px;
+    width: 100%;
+    max-width: 100%;
+}
+.aboutComponentTitle {
+    color: #262627;
+    font-family: 'Playfair Display';
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0px 0px 20px 0px;
+    text-align: left;
+    justify-content: flex-start;
+}
+.aboutComponentText {
+    color: #262627;
+    font-family: 'Playfair Display';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0px 0px 20px 0px;
+    text-align: left;
+    width: auto;
+    max-width: 100%;
+    justify-content: flex-start;
+}
