@@ -17,7 +17,6 @@
 }
 .aboutComponentTitle {
     color: #262627;
-    font-family: 'Playfair Display';
     font-size: 32px;
     font-weight: 500;
     line-height: 1.2;
@@ -27,7 +26,6 @@
 }
 .aboutComponentText {
     color: #262627;
-    font-family: 'Playfair Display';
     font-size: 16px;
     font-weight: 400;
     line-height: 1.4;

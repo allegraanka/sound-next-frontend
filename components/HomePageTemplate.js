@@ -40,8 +40,8 @@ const HomePageTemplate = ({ shows, featured }) => {
             </div>
             <div className={styles.homePageRightCol}>
                 <div className={styles.homePageRightInner}>
-                    <p className={styles.homePageRightColGreeting}>Community from scratch</p>
-                    <h2 className={styles.homePageRightColHeaderText}>The Sound is your source for live music in Rochester, NY</h2>
+                    <p className={styles.homePageRightColGreeting}>A home for the Rochester music scene and a resource for the whole community</p>
+                    <h2 className={styles.homePageRightColHeaderText}>The Sound is your source for live music in Rochester</h2>
                 </div>
                 <div>
                     <AboutUs />
