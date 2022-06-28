@@ -22,7 +22,7 @@ export default function FeaturedPosts({ featured }) {
 
     return(
         <div className={styles.featuredPostsContainer}>
-            {recentFeatured && recentFeatured.map((post) => {
+            {recentFeatured && recentFeatured.slice(0,3).map((post) => {
                 return (
                     <div key={post.sys.id} className={``}>
                         <div className={``}>
