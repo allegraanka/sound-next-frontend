@@ -16,20 +16,19 @@ const PostsPage = ({ posts }) => {
 
         <div className={styles.postsPageLatestSection}>
           <div className={styles.postsPageLatestSectionHeader}>
-            <h2 className={styles.postsPageLatestSectionHeaderTitle}>Latest</h2>
-            <p className={styles.postsPageLatestSectionHeaderText}>Check out our latest posts.</p>
+            <h2 className={styles.postsPageLatestSectionHeaderTitle}>Latest posts</h2>
           </div>
 
           <div className={styles.latestPosts}>
             {posts.slice(0,3).map((post) => (
-              <div key={post.sys.id} className={`my-12 w-fit`}>
+              <div key={post.sys.id} className={styles.postContainer}>
                 <div>
-                {/* <Image 
+                <Image 
                     src={`https:${post.fields.thumbnail.fields.file.url}`}
                     width={post.fields.thumbnail.fields.file.details.image.width}
                     height={post.fields.thumbnail.fields.file.details.image.height}
                     alt={post.fields.thumbnail.fields.description}
-                /> */}
+                />
                 <Link href={`/posts/${post.fields.slug}`}>
                   <a>
                     <h2 className={`text-2xl text-red-dark hover:text-red-light`}>{post.fields.title}</h2>

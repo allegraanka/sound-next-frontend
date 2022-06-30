@@ -50,6 +50,7 @@
 }
 
 .postsPageLatestSection {
+    display: flex;
     align-content: flex-start;
     align-items: flex-start;
     background: rgba(0, 0, 0, 0.0);
@@ -62,7 +63,7 @@
     flex-wrap: nowrap;
     height: auto;
     justify-content: space-between;
-    margin: 20px 20px 0px 20px;
+    margin: 20px auto 0px;
     padding: 40px 0px 0px 0px;
     width: 1280px;
     max-width: calc(100% - 40px);
@@ -137,13 +138,18 @@
     max-width: 49%;
 }
 .latestPosts {
+    display: flex;
     align-content: stretch;
     align-items: stretch;
     flex: none;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 0px;
     width: 67%;
     max-width: 67%;
+}
+.postContainer {
+    width: calc(33% - 80px);
+    max-width: calc(33% - 80px);
 }
