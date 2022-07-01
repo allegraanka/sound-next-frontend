@@ -1,0 +1,254 @@
+.homePageContainer {
+    display: flex;
+    align-content: flex-start;
+    align-items: flex-start;
+    background: rgba(0, 0, 0, 0.0);
+    flex: none;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: auto;
+    justify-content: flex-start;
+    margin: 40px auto 50px;
+    width: 90%;
+    max-width: calc(100% - 40px);
+}
+.homePageLeftCol {
+    display: flex;
+    align-content: flex-start;
+    align-items: flex-start;
+    flex: none;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding: 0px;
+    width: 70%;
+    max-width: 70%;
+}
+.tonightComponentContainer {
+    position: relative;
+    align-content: flex-start;
+    align-items: flex-start;
+    background: rgba(0, 0, 0, 0.0);
+    border-bottom: 0px solid #ececec;
+    border-left: 0px solid #ececec;
+    border-right: 0px solid #ececec;
+    border-top: 0px solid #ececec;
+    flex: none;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: auto;
+    justify-content: flex-start;
+    margin: 0px 40px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    width: calc(40% - 40px);
+    max-width: calc(40% - 40px);
+}
+.tonightComponentTitle {
+    /* border-bottom: 2px solid #262627; */
+    color: #262627;
+    flex: none;
+    font-size: 26px;
+    font-weight: 700;
+    height: auto;
+    line-height: 1.2;
+    padding: 0px 0px 30px 0px;
+    text-align: left;
+    width: 100%;
+    max-width: 100%;
+    justify-content: flex-start;
+}
+.tonightTimestamp {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    font-size: 72px;
+    color: #F27C7C;
+    opacity: 0.35;
+}
+.tonightComponentInner {
+    align-content: flex-start;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 35px 0px 0px 0px;
+    width: 960px;
+    max-width: 100%;
+}
+.featuredComponentContainer {
+    align-content: flex-start;
+    align-items: flex-start;
+    background: rgba(0, 0, 0, 0.0);
+    border-right: 2px solid #262627;
+    border-left: 2px solid #262627;
+    flex: none;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: auto;
+    justify-content: flex-start;
+    padding: 0px 40px 0px 40px;
+    width: 60%;
+    max-width: 60%;
+}
+.featuredComponentTitle {
+    color: #262627;
+    font-size: 26px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    height: auto;
+    line-height: 1.4;
+    margin: 0px 0px 20px 0px;
+    padding: 0px 0px 0px 0px;
+    text-align: left;
+    width: 188px;
+    max-width: 100%;
+    justify-content: flex-start;
+}
+
+.homePageRightCol {
+    align-content: flex-start;
+    align-items: flex-start;
+    background: rgba(0, 0, 0, 0.0);
+    flex: none;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: auto;
+    justify-content: flex-start;
+    margin: 0px 0px 0px 40px;
+    padding: 0px 0px 0px 0px;
+    width: calc(30% - 40px);
+    max-width: calc(30% - 40px);
+}
+.homePageRightInner {
+    align-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding: 0px;
+}
+.homePageRightColGreeting {
+    color: #262627;
+    font-size: 16px;
+    font-weight: 400;
+    height: auto;
+    line-height: 1.4;
+    width: auto;
+    max-width: 100%;
+    justify-content: center;
+}
+.homePageRightColHeaderText {
+    color: #262627;
+    font-size: 40px;
+    font-weight: 500;
+    height: auto;
+    line-height: 1;
+    margin: 20px 0px 35px 0px;
+    text-align: left;
+    width: auto;
+    max-width: 100%;
+    justify-content: flex-start;
+}
+
+@media screen and (min-width: 601px) and (max-width: 912px) {
+    .homePageContainer {
+        align-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+    .homePageLeftCol {
+        align-content: flex-start;
+        align-items: flex-start;
+        flex: none;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        width: 100%;
+        max-width: 100%;
+    }
+    .tonightComponentContainer {
+        flex: none;
+        width: calc(50% - 20px);
+        max-width: calc(50% - 20px);
+    }
+    .tonightTimestamp {
+        font-size: 60px;
+
+        
+    }
+    .featuredComponentContainer {
+        border-bottom: 0px solid #000000;
+        border-left: 2px solid #000000;
+        border-right: 0px solid #000000;
+        border-top: 0px solid #000000;
+        flex: none;
+        width: 50%;
+        max-width: 50%;
+    }
+    .homePageRightCol {
+        align-content: flex-start;
+        align-items: flex-start;
+        flex: none;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        margin: 30px 0px 0px 0px;
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .homePageContainer {
+        margin: 0px 20px 50px 20px;
+        max-width: calc(100% - 40px);
+        flex-direction: column;
+    }
+    .homePageLeftCol {
+        align-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        width:100%;
+        max-width: 100%;
+    }
+    .tonightComponentContainer {
+        flex: none;
+        height: auto;
+        margin: 0px 0px 0px 0px;
+        padding: 0px 0px 30px 0px;
+        width: 100%;
+        max-width: 100%;
+    }
+    .tonightTimestamp {
+        font-size: 60px;
+    }
+    .featuredComponentContainer {
+        border-bottom: 0px solid #000000;
+        border-left: 0px solid #000000;
+        border-right: 0px solid #000000;
+        border-top: 2px solid #000000;
+        flex: none;
+        margin: 0px 0px 0px 0px;
+        padding: 30px 0px 0px 0px;
+        width: 100%;
+        max-width: 100%;
+    }
+    .homePageRightCol {
+        align-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        margin: 0px 0px 0px 0px;
+        width: 100%;
+        max-width: 100%;
+    }
+    .homePageRightInner {
+        flex: none;
+        margin: 0px 0px 0px 0px;
+        width: 100%;
+        max-width: 100%;
+    }
+}

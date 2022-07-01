@@ -26,10 +26,7 @@ const Tonight = ({ shows }) => {
     });
 
     return(
-        <div className={`bg-white w-fit my-12 mx-auto p-2 shadow-2xl`}>
-            <div className={`text-3xl`}>{formatDate(current)}</div>
-            <h2 className={`text-5xl text-black drop-shadow-md`}>Rochester Tonight</h2>
-
+        <div className={``}>
             {shows.length === 0 && (
                 <span>We have no show recommendations tonight!</span>
             )}

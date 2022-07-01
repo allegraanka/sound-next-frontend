@@ -1,4 +1,5 @@
 import Layout from '../components/Layout';
+import HomePageTemplate from '../components/HomePageTemplate';
 import Tonight from '../components/Tonight';
 import FeaturedPosts from '../components/FeaturedPosts';
 import EmailCapture from '../components/EmailCapture';
@@ -14,7 +15,8 @@ const client = createClient({
 const HomePage = ({ shows, featured }) => {
   return (
     <Layout>
-      <div className={`grid grid-cols-1 lg:grid-cols-2`}>
+      <HomePageTemplate shows={shows} featured={featured}/>
+      {/* <div className={`grid grid-cols-1 lg:grid-cols-2`}>
         <div className={`p-2`}>
           <div className={`bg-white text-2xl my-2 w-fit md:text-left`}>The Sound is your source for curated live music in Rochester, NY and a music community incubator initiative. Learn more <Link href='/about'><a>about us</a></Link>.</div>
           <Tonight shows={shows}/>
@@ -27,7 +29,7 @@ const HomePage = ({ shows, featured }) => {
         <Link href='/about'>
           <a className={`text-4xl uppercase`}>Get to know us →</a>
         </Link>
-      </div>
+      </div> */}
     </Layout>
   );
 }

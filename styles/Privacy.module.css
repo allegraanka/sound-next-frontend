@@ -1,0 +1,13 @@
+.privacyPageContainer {
+    width: 90%;
+    margin: auto;
+}
+.privacyTitle {
+    font-size: 62px;
+}
+.privacySectionTitle {
+    font-size: 32px;
+}
+.privacyText {
+    margin: 25px auto;
+}
