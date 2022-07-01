@@ -12,7 +12,9 @@ export default function Footer() {
                         <h2 className={styles.footerContentCol1Title}>The Sound</h2>
                         <p className={styles.footerContentCol1Text}>Curated live music listings every day of the week and community-building in the Rochester, NY music scene.</p>
                         <div className={styles.footerContentCol1ReadMoreContainer}>
-                            <a className={styles.footerContentCol1ReadMore}>Read more</a>
+                            <Link href='/about'>
+                                <a className={styles.footerContentCol1ReadMore}>Read more</a>
+                            </Link>
                             <span className={styles.icon}><FaArrowRight /></span>
                         </div>
                     </div>
@@ -24,14 +26,14 @@ export default function Footer() {
                                 <li><Link href='/about'>About Us</Link></li>
                                 <li><Link href='/shows'>Upcoming Shows</Link></li>
                                 <li><Link href='/posts'>Blog</Link></li>
-                                <li><Link href='/'>Newsletter</Link></li>
+                                {/* <li><Link href='/'>Newsletter</Link></li> */}
                             </ul>
                         </div>
                         <div className={styles.footerContentResourcesNav}>
                             <h3 className={styles.footerContentResourcesTitle}>Resources</h3>
                             <ul className={styles.footerContentResourcesNavList}>
-                                <li><Link href='/'>Privacy Policy</Link></li>
-                                <li><Link href='/'>Terms and Conditions</Link></li>
+                                <li><Link href='/privacy'>Privacy Policy</Link></li>
+                                <li><Link href='/terms'>Terms and Conditions</Link></li>
                             </ul>
                         </div>
                     </div>

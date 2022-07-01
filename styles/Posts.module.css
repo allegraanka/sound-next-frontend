@@ -50,11 +50,11 @@
 }
 
 .postsPageLatestSection {
-    display: flex;
+    
     align-content: flex-start;
     align-items: flex-start;
     background: rgba(0, 0, 0, 0.0);
-    border-bottom: 0px solid #000;
+    border-bottom: 2px solid #000;
     border-left: 0px solid #000;
     border-right: 0px solid #000;
     border-top: 2px solid #000;
@@ -68,31 +68,13 @@
     width: 1280px;
     max-width: calc(100% - 40px);
 }
-.postsPageLatestSectionHeader {
-    align-content: flex-start;
-    align-items: flex-start;
-    background: rgba(0, 0, 0, 0.0);
-    border-bottom: 2px solid #000;
-    border-left: 2px solid #000;
-    border-right: 2px solid #000;
-    border-top: 2px solid #000;
-    flex: none;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    height: auto;
-    justify-content: flex-start;
-    margin: 0px 80px 0px 0px;
-    padding: 30px 30px 30px 30px;
-    width: calc(33% - 80px);
-    max-width: calc(33% - 80px);
-}
 .postsPageLatestSectionHeaderTitle {
     color: #262627;
     font-size: 32px;
     font-weight: 700;
     height: auto;
     line-height: 1.4;
-    margin: 0px 0px 0px 0px;
+    margin: 0px 0px 30px 0px;
     text-align: left;
     width: auto;
     max-width: 100%;
@@ -144,12 +126,94 @@
     flex: none;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     padding: 0px;
-    width: 67%;
-    max-width: 67%;
+    width: 100%;
+    max-width: 100%;
 }
 .postContainer {
-    width: calc(33% - 80px);
-    max-width: calc(33% - 80px);
+    align-content: flex-start;
+    align-items: flex-start;
+    background: rgba(0, 0, 0, 0.0);
+    border: solid 0px #EEEEEE;
+    border-radius: 0;
+    flex: none;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: auto;
+    justify-content: flex-start;
+    margin: 0px 0px 30px 0px;
+    padding: 0px;
+    width: 32%;
+    max-width: 32%;
+}
+.postContainer:hover {
+    opacity: 0.75;
+}
+.allPostsContainer {
+    display: flex;
+    align-content: flex-start;
+    align-items: flex-start;
+    background: rgba(0, 0, 0, 0.0);
+    flex: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: auto;
+    justify-content: space-between;
+    margin: 20px auto 0px;
+    padding: 40px 0px 0px 0px;
+    width: 1280px;
+    max-width: calc(100% - 40px);
+}
+
+.latestPostDate,
+.allPostDate {
+    color: #262627;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin: 20px 0px 10px 0px;
+    text-align: left;
+    text-decoration: none;
+    justify-content: flex-start;
+}
+
+.latestPostTitle,
+.allPostTitle {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0px 0px 20px 0px;
+    text-align: left;
+    justify-content: flex-start;
+}
+
+.latestPostDescription,
+.allPostDescription {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0px 0px 20px 0px;
+    text-align: left;
+    width: auto;
+    max-width: 100%;
+    justify-content: flex-start;
+}
+
+@media screen and (max-width: 600px) {
+    .postsHeaderContainer {
+        width: 100%;
+        max-width: 100%;
+    }
+    .postsHeaderTitle {
+        font-size: 62px;
+    }
+    .latestPosts {
+        flex-direction: column;
+    }
+    .postContainer {
+        width: 100%;
+        max-width: 100%;
+    }
 }
