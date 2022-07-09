@@ -5,8 +5,7 @@ import Paginator from '../../components/Paginator';
 
 
 const ShowsPage = ({ shows, flyers }) => {
-    console.log('flyers ', flyers);
-    return(
+    return (
         <Layout title='The Sound | Upcoming Shows'>
             <div className={`grid place-items-center min-h-screen`}>
                 <div className={`p-4 mx-auto`}>
@@ -19,11 +18,11 @@ const ShowsPage = ({ shows, flyers }) => {
                     </div> */}
                     <div className={`mx-auto w-full lg:col-span-3 lg:mx-12`}>
                         {shows.length === 0 && <p>There are no upcoming shows right now!</p>}
-                        <Paginator shows={shows}/>
+                        <Paginator shows={shows} />
                     </div>
                 </div>
             </div>
-        </Layout>  
+        </Layout>
     );
 }
 
@@ -31,7 +30,7 @@ export async function getStaticProps() {
     const client = createClient({
         space: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_KEY
-      });
+    });
 
     const shows = await client.getEntries({ content_type: 'show' });
     const flyers = await client.getEntries({ content_type: 'showFlyer' });
@@ -51,7 +50,7 @@ export async function getStaticProps() {
         };
     });
 
-    const datetimeSorted = upcomingShows.sort((a,b) => {
+    const datetimeSorted = upcomingShows.sort((a, b) => {
         const x = new Date(a.fields.date);
         const y = new Date(b.fields.date);
         return x - y;
@@ -67,14 +66,14 @@ export async function getStaticProps() {
         }
         return flyerData;
     })
-  
+
     return {
         props: {
-          shows: datetimeSorted,
-          flyers: flyersUrls
+            shows: datetimeSorted,
+            flyers: flyersUrls
         },
         revalidate: 3600, // revalidates at most once every hour
-      }
-  }
+    }
+}
 
 export default ShowsPage;
