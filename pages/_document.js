@@ -26,7 +26,9 @@ export default class TheSoundDocument extends Document {
         return (
             <Html>
                 <Head>
+                    {/* Injecting Segment Tracking Script */}
                     <script dangerouslySetInnerHTML={{ __html: this.renderSegmentSnippet() }} />
+
                     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8678599667192601" crossOrigin="anonymous"></script>
                     <link rel="preconnect" href="https://fonts.googleapis.com"></link>
                     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin></link>

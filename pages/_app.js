@@ -4,11 +4,12 @@ import { useRouter } from 'next/router'
 import * as gtag from '../lib/gtag'
 
 const App = ({ Component, pageProps }) => {
-  // GOOGLE ANALYTICS TRACKING ROUTE CHANGES
+  // GOOGLE ANALYTICS & SEGMENT TRACKING ROUTE CHANGES
   const router = useRouter();
   useEffect(() => {
     const handleRouteChange = (url) => {
       gtag.pageview(url);
+      window.analytics.page(url);
     }
     router.events.on('routeChangeComplete', handleRouteChange);
     return () => {
