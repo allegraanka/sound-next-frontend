@@ -9,6 +9,7 @@ const App = ({ Component, pageProps }) => {
   useEffect(() => {
     const handleRouteChange = (url) => {
       gtag.pageview(url);
+      window.analytics.page(url);
     }
     router.events.on('routeChangeComplete', handleRouteChange);
     return () => {
