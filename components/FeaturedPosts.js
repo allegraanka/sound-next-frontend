@@ -7,7 +7,7 @@ export default function FeaturedPosts({ featured }) {
     const formatDate = (dateInput) => {
         const date = new Date(dateInput);
         const day = date.getDate();
-        const month = date.getMonth()+1;
+        const month = date.getMonth() + 1;
         const year = date.getFullYear();
         const formattedDate = `${month}/${day}/${year}`;
         return formattedDate;
@@ -16,17 +16,30 @@ export default function FeaturedPosts({ featured }) {
     const recentFeatured = featured.filter((featured) => {
         const featuredDate = new Date(featured.sys.createdAt);
         const d = new Date();
-        const compareDate = d.setMonth(d.getMonth()-1);
+        const compareDate = d.setMonth(d.getMonth() - 1);
         return featuredDate >= compareDate;
     })
 
-    return(
+    function featureClicked(post) {
+        const postObject = {
+            title: post.fields.title,
+            description: post.fields.description,
+            slug: post.fields.slug,
+            featured: post.fields.featured,
+            createdAt: post.sys.createdAt
+        }
+        analytics.track('Feature Clicked', {
+            postObject
+        })
+    }
+
+    return (
         <div className={styles.featuredPostsContainer}>
-            {recentFeatured && recentFeatured.slice(0,3).map((post) => {
+            {recentFeatured && recentFeatured.slice(0, 3).map((post) => {
                 return (
                     <div key={post.sys.id} className={``}>
                         <div className={``}>
-                            <Image 
+                            <Image
                                 src={`https:${post.fields.thumbnail.fields.file.url}`}
                                 width={post.fields.thumbnail.fields.file.details.image.width}
                                 height={post.fields.thumbnail.fields.file.details.image.height}
@@ -37,9 +50,9 @@ export default function FeaturedPosts({ featured }) {
                             <p className={styles.featuredPostDisplayDate}>{formatDate(post.sys.createdAt)}</p>
                             <div className={styles.featuredPostTitle}>
                                 <Link href={`${post.fields.post === true ? '/posts/' : ''}${post.fields.slug}`}>
-                                    <a>{post.fields.title}</a>
+                                    <a onClick={(e) => featureClicked(post, e)}>{post.fields.title}</a>
                                 </Link>
-                            </div>                     
+                            </div>
 
                             <ReactMarkdown className={styles.featuredPostDescription}>{post.fields.description}</ReactMarkdown>
                             <Link href={`${post.fields.post === true ? '/posts/' : ''}${post.fields.slug}`}>
